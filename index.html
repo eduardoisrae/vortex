@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" data-critters-container>
+<head>
+  <meta charset="utf-8">
+  <title>Vortex</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="img/logitvox.png">
+  <script>
+    // Esperar a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        // Verificar que los elementos existan antes de añadir eventos
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+
+            // Cerrar el menú al hacer clic en un enlace de navegación
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                });
+            });
+
+            // Cerrar el menú si se hace clic fuera de él
+            document.addEventListener('click', (event) => {
+                const isClickInsideNav = nav.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnToggle && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.getElementById('carousel');
+      const slides = document.querySelectorAll('.slide');
+      const prevButton = document.getElementById('prev');
+      const nextButton = document.getElementById('next');
+      
+      let currentSlide = 0;
+      let interval;
+  
+      function goToSlide(index) {
+          currentSlide = index;
+          carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+          resetTimer();
+      }
+  
+      function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          goToSlide(currentSlide);
+      }
+  
+      function prevSlide() {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          goToSlide(currentSlide);
+      }
+  
+      function resetTimer() {
+          clearInterval(interval);
+          interval = setInterval(nextSlide, 3000);
+      }
+  
+      // Event listeners
+      prevButton.addEventListener('click', () => {
+          prevSlide();
+          resetTimer();
+      });
+  
+      nextButton.addEventListener('click', () => {
+          nextSlide();
+          resetTimer();
+      });
+  
+      // Start autoplay
+      resetTimer();
+  
+      // Pause autoplay when hovering over carousel
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', resetTimer);
+  });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // Función para manejar la navegación
+    function handleNavigation() {
+        // Obtener todos los enlaces
+        const links = document.querySelectorAll('.nav a');
+        
+        // Agregar evento click a cada enlace
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Obtener el ID de la sección desde el href
+                const sectionId = link.getAttribute('href').substring(1);
+                
+                // Ocultar todas las secciones
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Mostrar la sección seleccionada
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    }
+
+    // Inicializar la navegación cuando el documento esté listo
+    document.addEventListener('DOMContentLoaded', handleNavigation);
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+        
+        header.addEventListener('click', function() {
+            // Si el elemento está activo, lo cerramos
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                // Cerramos todos los elementos activos
+                accordionItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                });
+                
+                // Abrimos el elemento seleccionado
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+});
+</script>
+<link rel="stylesheet" href="styles-5INURTSO.css"></head>
+<body>
+  <app-root></app-root>
+  <app-carrusel4></app-carrusel4>
+  <app-seccionuno></app-seccionuno>
+  <app-seccion2></app-seccion2>
+  <app-secciontres></app-secciontres>
+  <app-seccioncuatro></app-seccioncuatro>
+  <app-seccion5></app-seccion5>
+  <app-seccionseis></app-seccionseis>
+  <app-seccion7></app-seccion7>
+  <app-seccionocho></app-seccionocho>
+  <app-seccion9></app-seccion9>
+  <app-secciondiez></app-secciondiez>
+  <app-seccion11></app-seccion11>
+  <app-secciondoce></app-secciondoce>
+  <app-footers></app-footers>
+<script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-YPORHEON.js" type="module"></script></body>
+</html>
